@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <!-- Domain 仅依赖共享内核（SharedKernel 零第三方依赖，仅提供 DataScope 等共享枚举），
+       不引用任何业务项目与第三方库（LLD §2.6.4） -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Shared\SmartCampusOS.SharedKernel\src\SmartCampusOS.SharedKernel\SmartCampusOS.SharedKernel.csproj" />
+  </ItemGroup>
+
+</Project>

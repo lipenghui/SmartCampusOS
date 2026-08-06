@@ -1,0 +1,16 @@
+{
+  "name": "@smartcampus/e2e",
+  "version": "0.1.0",
+  "private": true,
+  "description": "SmartCampusOS 前端 E2E 功能测试(Playwright + playwright-bdd, Gherkin)",
+  "scripts": {
+    "test": "playwright-bdd test",
+    "test:headed": "playwright-bdd test --headed",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "playwright-bdd": "^9.2.0",
+    "typescript": "^7.0.2"
+  }
+}

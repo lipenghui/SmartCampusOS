@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/SmartCampusOS.AppHost/SmartCampusOS.AppHost.csproj" />
+    <Project Path="src/SmartCampusOS.ServiceDefaults/SmartCampusOS.ServiceDefaults.csproj" />
+  </Folder>
+</Solution>

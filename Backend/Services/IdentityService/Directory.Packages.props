@@ -1,0 +1,55 @@
+<Project>
+
+  <!-- 中央包管理（CPM）：IdentityService 目录级统一依赖版本，对齐 LLD §2.6.7 -->
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- 配置绑定（强类型配置 LLD §2.6.7） -->
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.10" />
+    <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.10" />
+
+    <!-- 数据访问 -->
+    <PackageVersion Include="FreeSql" Version="3.5.311" />
+    <PackageVersion Include="FreeSql.Provider.MySql" Version="3.5.311" />
+
+    <!-- 缓存 -->
+    <PackageVersion Include="StackExchange.Redis" Version="3.1.3" />
+
+    <!-- 消息总线（MassTransit + RabbitMQ，LLD §2.4） -->
+    <PackageVersion Include="MassTransit" Version="9.2.0" />
+    <PackageVersion Include="MassTransit.RabbitMQ" Version="9.2.0" />
+
+    <!-- 安全 / JWT -->
+    <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="8.22.0" />
+
+    <!-- Excel 批量导入 -->
+    <PackageVersion Include="NPOI" Version="2.8.0" />
+
+    <!-- 校验与映射（LLD §2.6.4） -->
+    <PackageVersion Include="FluentValidation" Version="12.1.1" />
+    <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
+    <PackageVersion Include="Mapster" Version="10.0.11" />
+
+    <!-- Swagger -->
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.2.3" />
+
+    <!-- 测试框架 -->
+    <PackageVersion Include="coverlet.collector" Version="6.0.4" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageVersion Include="xunit" Version="2.9.3" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.4" />
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="10.0.10" />
+
+    <!-- BDD 功能测试（Reqnroll，LLD §12 验收场景） -->
+    <PackageVersion Include="Reqnroll" Version="3.3.4" />
+    <PackageVersion Include="Reqnroll.xUnit" Version="3.3.4" />
+
+    <!-- Testcontainers 集成测试（LLD §12，真实 MySQL/Redis） -->
+    <PackageVersion Include="Testcontainers" Version="4.13.0" />
+    <PackageVersion Include="Testcontainers.MySql" Version="4.13.0" />
+    <PackageVersion Include="Testcontainers.Redis" Version="4.13.0" />
+  </ItemGroup>
+
+</Project>

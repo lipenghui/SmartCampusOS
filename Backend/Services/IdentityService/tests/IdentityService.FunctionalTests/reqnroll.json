@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.reqnroll.net/reqnroll-config-latest.json",
+  "language": {
+    "feature": "zh-CN"
+  },
+  "bindingCulture": {
+    "language": "zh-CN"
+  },
+  "runtime": {
+    "missingOrPendingStepsOutcome": "Error"
+  }
+}

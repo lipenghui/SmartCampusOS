@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Sdk Name="Aspire.AppHost.Sdk" Version="13.4.6" />
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsAspireHost>true</IsAspireHost>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="13.4.6" />
+    <PackageReference Include="Aspire.Hosting.MySql" Version="13.4.6" />
+    <PackageReference Include="Aspire.Hosting.RabbitMQ" Version="13.4.6" />
+    <PackageReference Include="Aspire.Hosting.Redis" Version="13.4.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\ApiGateway\src\ApiGateway\ApiGateway.csproj" />
+    <ProjectReference Include="..\..\..\Services\IdentityService\src\IdentityService.Api\IdentityService.Api.csproj" />
+    <ProjectReference Include="..\..\..\Services\EduService\src\EduService.Api\EduService.Api.csproj" />
+    <ProjectReference Include="..\..\..\Services\DormService\src\DormService.Api\DormService.Api.csproj" />
+    <ProjectReference Include="..\..\..\Services\NoticeService\src\NoticeService.Api\NoticeService.Api.csproj" />
+    <ProjectReference Include="..\..\..\Services\DataService\src\DataService.Api\DataService.Api.csproj" />
+    <ProjectReference Include="..\..\..\Services\PushGateway\src\PushGateway.Api\PushGateway.Api.csproj" />
+    <ProjectReference Include="..\..\..\Services\FileService\src\FileService.Api\FileService.Api.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/SmartCampusOS.SharedKernel/SmartCampusOS.SharedKernel.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SmartCampusOS.SharedKernel.Tests/SmartCampusOS.SharedKernel.Tests.csproj" />
+  </Folder>
+</Solution>

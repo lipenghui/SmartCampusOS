@@ -1,0 +1,32 @@
+# ===== .NET 构建产物 =====
+**/bin/
+**/obj/
+*.user
+*.suo
+
+# ===== 前端依赖与构建 =====
+node_modules/
+dist/
+*.local
+.env
+.env.local
+.env.*.local
+# 注意: .env.development / .env.production 为公开配置, 保留入库
+
+# ===== E2E / 功能测试生成物 =====
+.features-gen/
+test-results/
+playwright-report/
+
+# ===== 环境脚本产物 =====
+scripts/logs/
+*.pid
+
+# ===== IDE / 编辑器 =====
+.vs/
+.vscode/
+.idea/
+
+# ===== 系统文件 =====
+Thumbs.db
+.DS_Store

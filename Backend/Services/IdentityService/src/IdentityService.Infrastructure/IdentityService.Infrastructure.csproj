@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <!-- 接受 NPOI 的 OSMF EULA 许可（NPOI 官方要求，Apache-2.0 双重许可） -->
+    <AcceptNPOIOSMFLicense>true</AcceptNPOIOSMFLicense>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- 使用 ASP.NET Core 共享框架（IHttpContextAccessor 等抽象，审计 IP 采集） -->
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FreeSql" />
+    <PackageReference Include="FreeSql.Provider.MySql" />
+    <PackageReference Include="StackExchange.Redis" />
+    <PackageReference Include="MassTransit" />
+    <PackageReference Include="MassTransit.RabbitMQ" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" />
+    <PackageReference Include="NPOI" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IdentityService.Application\IdentityService.Application.csproj" />
+    <ProjectReference Include="..\IdentityService.Domain\IdentityService.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\Shared\SmartCampusOS.SharedKernel\src\SmartCampusOS.SharedKernel\SmartCampusOS.SharedKernel.csproj" />
+  </ItemGroup>
+
+</Project>

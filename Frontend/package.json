@@ -1,0 +1,15 @@
+{
+  "name": "smart-campus-web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "SmartCampusOS 智慧校园管理系统前端 monorepo（admin / app / screen / packages/shared）",
+  "packageManager": "pnpm@9.15.9",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "build:admin": "pnpm --filter @smartcampus/admin build",
+    "build:screen": "pnpm --filter @smartcampus/screen build",
+    "typecheck": "pnpm -r typecheck"
+  }
+}
