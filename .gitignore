@@ -19,7 +19,7 @@ test-results/
 playwright-report/
 
 # ===== 环境脚本产物 =====
-scripts/logs/
+04-scripts/logs/
 *.pid
 
 # ===== IDE / 编辑器 =====

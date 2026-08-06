@@ -27,16 +27,16 @@
 
 ```
 SmartCampusOS/
-├── Backend/
-│   ├── ApiGateway/           # API 网关(端口 5000)
-│   ├── Host/                 # .NET Aspire AppHost 编排 + ServiceDefaults
-│   ├── Services/             # 7 个微服务(端口 5111~5117)
-│   └── Shared/SharedKernel/  # 共享内核:Result/雪花ID/时间/脱敏/DataScope
-├── Frontend/
-│   ├── admin/                # Vue 3 管理端(端口 5173)
-│   └── packages/shared/      # 前端共享包(请求封装/类型/工具)
-├── Docs/                     # PRD / LLD / 数据库设计 / 测试报告
-├── scripts/                  # 功能测试环境编排脚本
+├── 01-Docs/                    # PRD / LLD / 数据库设计 / 测试报告
+├── 02-Backend/
+│   ├── ApiGateway/             # API 网关(端口 5000)
+│   ├── Host/                   # .NET Aspire AppHost 编排 + ServiceDefaults
+│   ├── Services/               # 7 个微服务(端口 5111~5117)
+│   └── Shared/SharedKernel/    # 共享内核:Result/雪花ID/时间/脱敏/DataScope
+├── 03-Frontend/
+│   ├── admin/                  # Vue 3 管理端(端口 5173)
+│   └── packages/shared/        # 前端共享包(请求封装/类型/工具)
+├── 04-scripts/                 # 功能测试环境编排脚本
 └── tests 相关:后端 BDD(Reqnroll)、前端 E2E(Playwright)
 ```
 
@@ -45,10 +45,12 @@ SmartCampusOS/
 ### 1. 启动后端(全部服务 + 基础设施)
 
 ```bash
-dotnet run --project Backend/Host/src/SmartCampusOS.AppHost
+dotnet run --project 02-Backend/Host/src/SmartCampusOS.AppHost
 ```
 
-Aspire 会自动拉起 8 个 MySQL 库 + Redis + RabbitMQ 与全部服务:
+> 编排细节、资源清单、常见问题见 [02-Backend/Host/README.md](02-Backend/Host/README.md)。
+
+Aspire 会自动拉起 7 个 MySQL 库（每服务一库）+ Redis + RabbitMQ 与全部服务:
 
 | 资源 | 地址 |
 |---|---|
@@ -59,7 +61,7 @@ Aspire 会自动拉起 8 个 MySQL 库 + Redis + RabbitMQ 与全部服务:
 ### 2. 启动前端
 
 ```bash
-cd Frontend
+cd 03-Frontend
 corepack pnpm install        # 首次
 cd admin && corepack pnpm dev   # http://localhost:5173
 ```
@@ -84,25 +86,27 @@ cd admin && corepack pnpm dev   # http://localhost:5173
 
 ```bash
 # 功能测试环境(容器 + 服务)
-bash scripts/start-e2e-env.sh
+bash 04-scripts/start-e2e-env.sh
 
 # 后端 BDD
-cd Backend/Services/IdentityService && dotnet test tests/IdentityService.FunctionalTests
+cd 02-Backend/Services/IdentityService && dotnet test tests/IdentityService.FunctionalTests
 
 # 前端 E2E
-cd Frontend/e2e && npm install && npx playwright install chromium && npx playwright-bdd test
+cd 03-Frontend/e2e && npm install && npx playwright install chromium && npx playwright-bdd test
 
 # 停止环境
-bash scripts/stop-e2e-env.sh
+bash 04-scripts/stop-e2e-env.sh
 ```
 
-详细测试报告见 [`Docs/SmartCampusOS-测试报告-20260806.md`](Docs/SmartCampusOS-测试报告-20260806.md)。
+详细测试报告见 [`01-Docs/SmartCampusOS-测试报告-20260806.md`](01-Docs/SmartCampusOS-测试报告-20260806.md)。
 
 ## 📚 文档
 
-- [产品需求文档 PRD](Docs/SmartCampusOS-智慧校园管理系统-PRD.md)
-- [低层设计文档 LLD](Docs/SmartCampusOS-智慧校园管理系统-LLD.md)
-- [数据库设计文档](Docs/SmartCampusOS-智慧校园管理系统-数据库设计文档.md)
+- [产品需求文档 PRD](01-Docs/SmartCampusOS-智慧校园管理系统-PRD.md)
+- [低层设计文档 LLD](01-Docs/SmartCampusOS-智慧校园管理系统-LLD.md)（v1.1 起标注各模块实现状态：✅ 已实现 / 🚧 规划中 / ➡️ 目标架构）
+- [数据库设计文档](01-Docs/SmartCampusOS-智慧校园管理系统-数据库设计文档.md)（v1.1 起标注各库实现状态，identity_db 字段与代码实体核对一致）
+- [架构决策记录 ADR](01-Docs/ADR-SmartCampusOS-架构决策记录.md)
+- [测试报告](01-Docs/SmartCampusOS-测试报告-20260806.md)
 
 ## ⚠️ 安全提示
 
