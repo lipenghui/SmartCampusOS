@@ -32,6 +32,15 @@ var redis = builder.AddRedis("redis");
 // RabbitMQ：领域事件总线（LLD §7 MassTransit + RabbitMQ）
 var rabbitmq = builder.AddRabbitMQ("rabbitmq");
 
+// MinIO：对象存储（LLD §2.4 MinIO-OSS，FileService 专用）
+// MinIO 镜像需要 server /data 命令 + --console-address 指定控制台端口
+var minio = builder.AddContainer("minio", "minio/minio")
+    .WithArgs("server", "/data", "--console-address", ":9001")
+    .WithEndpoint(port: 9000, targetPort: 9000, name: "api")
+    .WithEndpoint(port: 9001, targetPort: 9001, name: "console")
+    .WithEnvironment("MINIO_ROOT_USER", "minioadmin")
+    .WithEnvironment("MINIO_ROOT_PASSWORD", "minioadmin");
+
 // ============================================================
 // 微服务项目（LLD §2.3 服务划分）
 // ============================================================
@@ -67,7 +76,7 @@ var dormService = builder.AddProject<Projects.DormService_Api>("dorm-service")
     .WaitFor(redis)
     .WaitFor(rabbitmq);
 
-// NoticeService — 通知家校（Noti-01~05），HTTP 5114
+// NoticeService — 通知家校（01~05），HTTP 5114
 var noticeService = builder.AddProject<Projects.NoticeService_Api>("notice-service")
     .WithHttpEndpoint(port: 5114, name: "http")
     .WithReference(mysqlNotice)
@@ -101,8 +110,13 @@ var pushGateway = builder.AddProject<Projects.PushGateway_Api>("push-gateway")
 var fileService = builder.AddProject<Projects.FileService_Api>("file-service")
     .WithHttpEndpoint(port: 5117, name: "http")
     .WithReference(mysqlFile)
+    .WithEnvironment("FileService:Database:ConnectionString", mysqlFile)
+    .WithEnvironment("FileService:Minio:Endpoint", "localhost:9000")
+    .WithEnvironment("FileService:Minio:AccessKey", "minioadmin")
+    .WithEnvironment("FileService:Minio:SecretKey", "minioadmin")
     .WithReference(redis)
     .WaitFor(mysqlFile)
+    .WaitFor(minio)
     .WaitFor(redis);
 
 // ============================================================

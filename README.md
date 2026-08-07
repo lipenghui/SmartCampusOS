@@ -30,7 +30,7 @@ SmartCampusOS/
 ├── 01-Docs/                    # PRD / LLD / 数据库设计 / 测试报告
 ├── 02-Backend/
 │   ├── ApiGateway/             # API 网关(端口 5000)
-│   ├── Host/                   # .NET Aspire AppHost 编排 + ServiceDefaults
+│   ├── AspireHost/             # .NET Aspire 本地编排(AppHost + ServiceDefaults)
 │   ├── Services/               # 7 个微服务(端口 5111~5117)
 │   └── Shared/SharedKernel/    # 共享内核:Result/雪花ID/时间/脱敏/DataScope
 ├── 03-Frontend/
@@ -45,10 +45,10 @@ SmartCampusOS/
 ### 1. 启动后端(全部服务 + 基础设施)
 
 ```bash
-dotnet run --project 02-Backend/Host/src/SmartCampusOS.AppHost
+dotnet run --project 02-Backend/AspireHost/src/SmartCampusOS.AppHost
 ```
 
-> 编排细节、资源清单、常见问题见 [02-Backend/Host/README.md](02-Backend/Host/README.md)。
+> 编排细节、资源清单、常见问题见 [02-Backend/AspireHost/README.md](02-Backend/AspireHost/README.md)。
 
 Aspire 会自动拉起 7 个 MySQL 库（每服务一库）+ Redis + RabbitMQ 与全部服务:
 
@@ -102,10 +102,9 @@ bash 04-scripts/stop-e2e-env.sh
 
 ## 📚 文档
 
-- [产品需求文档 PRD](01-Docs/SmartCampusOS-智慧校园管理系统-PRD.md)
-- [低层设计文档 LLD](01-Docs/SmartCampusOS-智慧校园管理系统-LLD.md)（v1.1 起标注各模块实现状态：✅ 已实现 / 🚧 规划中 / ➡️ 目标架构）
-- [数据库设计文档](01-Docs/SmartCampusOS-智慧校园管理系统-数据库设计文档.md)（v1.1 起标注各库实现状态，identity_db 字段与代码实体核对一致）
-- [架构决策记录 ADR](01-Docs/ADR-SmartCampusOS-架构决策记录.md)
+- [产品需求文档 PRD](01-Docs/01SmartCampusOS-智慧校园管理系统-PRD.md)
+- [低层设计文档 LLD](01-Docs/02SmartCampusOS-智慧校园管理系统-LLD.md)（v1.1 起标注各模块实现状态：✅ 已实现 / 🚧 规划中 / ➡️ 目标架构）
+- [数据库设计文档](01-Docs/03SmartCampusOS-智慧校园管理系统-数据库设计文档.md)（v1.1 起标注各库实现状态，identity_db 字段与代码实体核对一致）
 - [测试报告](01-Docs/SmartCampusOS-测试报告-20260806.md)
 
 ## ⚠️ 安全提示

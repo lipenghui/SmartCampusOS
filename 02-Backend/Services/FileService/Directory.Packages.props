@@ -1,0 +1,39 @@
+<Project>
+
+  <!-- 中央包管理（CPM）：FileService 目录级统一依赖版本，对齐 LLD §2.6.7 -->
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- 配置绑定（强类型配置 LLD §2.6.7） -->
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.10" />
+    <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.10" />
+
+    <!-- 数据访问 -->
+    <PackageVersion Include="FreeSql" Version="3.5.311" />
+    <PackageVersion Include="FreeSql.Provider.MySql" Version="3.5.311" />
+
+    <!-- 对象存储 -->
+    <PackageVersion Include="Minio" Version="6.0.4" />
+
+    <!-- 图片处理（LLD §3.8：图片压缩/缩略图/水印） -->
+    <PackageVersion Include="SixLabors.ImageSharp" Version="3.1.11" />
+    <PackageVersion Include="SixLabors.ImageSharp.Drawing" Version="2.1.6" />
+
+    <!-- 校验与映射（LLD §2.6.4） -->
+    <PackageVersion Include="FluentValidation" Version="12.1.1" />
+    <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
+
+    <!-- Swagger -->
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.2.3" />
+
+    <!-- 测试框架 -->
+    <PackageVersion Include="coverlet.collector" Version="6.0.4" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageVersion Include="xunit" Version="2.9.3" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.4" />
+    <PackageVersion Include="Moq" Version="4.20.72" />
+  </ItemGroup>
+
+</Project>

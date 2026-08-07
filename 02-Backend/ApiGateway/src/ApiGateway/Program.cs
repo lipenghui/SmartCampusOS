@@ -9,6 +9,12 @@ using SmartCampusOS.ApiGateway.Security;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Kestrel：文件上传最大 100MB（LLD §3.8 FileService 单文件 ≤ 50MB，批量 ≤ 9 张）
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.Limits.MaxRequestBodySize = 100 * 1024 * 1024; // 100MB
+});
+
 var gatewaySection = builder.Configuration.GetSection(GatewayOptions.SectionName);
 builder.Services.Configure<GatewayOptions>(gatewaySection);
 

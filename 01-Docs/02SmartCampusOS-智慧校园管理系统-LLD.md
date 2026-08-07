@@ -253,7 +253,7 @@ SmartCampusOS/
 │   ├── ApiGateway/
 │   ├── Services/
 │   ├── Shared/SmartCampusOS.SharedKernel/
-│   └── Host/
+│   └── AspireHost/
 ├── 03-Frontend/                          # 前端代码（本小节）
 │   ├── admin/                         # Web 管理端（Vue 3 + TypeScript + Vite + Pinia + Element Plus）✅
 │   ├── app/                           # App/小程序（uni-app，Vue 3，对应 §2.4 选型）🚧 空目录占位，pnpm workspace 已声明

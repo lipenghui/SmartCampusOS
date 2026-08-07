@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FreeSql" />
+    <PackageReference Include="FreeSql.Provider.MySql" />
+    <PackageReference Include="Minio" />
+    <PackageReference Include="SixLabors.ImageSharp" />
+    <PackageReference Include="SixLabors.ImageSharp.Drawing" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FileService.Application\FileService.Application.csproj" />
+    <ProjectReference Include="..\FileService.Domain\FileService.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\Shared\SmartCampusOS.SharedKernel\src\SmartCampusOS.SharedKernel\SmartCampusOS.SharedKernel.csproj" />
+  </ItemGroup>
+
+</Project>

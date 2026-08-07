@@ -1,6 +1,6 @@
 # SmartCampusOS.Host — 本地编排(解决方案根)
 
-> 本 README 位于 `02-Backend/Host/` 解决方案根(`SmartCampusOS.Host.slnx`),覆盖两个项目:
+> 本 README 位于 `02-Backend/AspireHost/` 解决方案根(`SmartCampusOS.Host.slnx`),覆盖两个项目:
 > 
 > - **SmartCampusOS.AppHost** — .NET Aspire 本地编排(本 README 的主角)
 > - **SmartCampusOS.ServiceDefaults** — 各服务共享的默认配置(OpenTelemetry / 服务发现 / 健康检查)
@@ -21,7 +21,7 @@
 ## 快速开始
 
 ```bash
-# 1. 从仓库根目录启动(或直接运行 02-Backend/Host/SmartCampusOS.Host.slnx)
+# 1. 从仓库根目录启动(或直接运行 02-Backend/AspireHost/SmartCampusOS.Host.slnx)
 dotnet run --project src/SmartCampusOS.AppHost
 ```
 
